@@ -1,0 +1,38 @@
+#
+# Create IAM Instance Profile
+#
+resource "aws_iam_instance_profile" "ec2_iam_role" {
+    name = "ec2_iam_role"
+    roles = ["${aws_iam_role.ec2_iam_role.name}"]
+}
+
+#
+# Create IAM role
+#
+resource "aws_iam_role" "ec2_iam_role" {
+    name = "ec2_iam_role"
+    assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+#
+# Attach Managed Policy
+#
+resource "aws_iam_policy_attachment" "ec2-role-attach" {
+    name = "ec2-role-attach"
+    roles = ["${aws_iam_role.ec2_iam_role.name}"]
+    policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
+}

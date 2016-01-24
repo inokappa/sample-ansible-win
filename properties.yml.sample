@@ -1,0 +1,20 @@
+ec2-xx-xx-xx-x1.ap-northeast-1.compute.amazonaws.com:
+  :username: 'User'
+  :password: 'xxxxxxxxxxxxxxxxxxx'
+  :name: :web01
+  :roles:
+    - iis
+    - web
+
+ec2-xx-xx-xx-x1.ap-northeast-1.compute.amazonaws.com:
+  :username: 'User'
+  :password: 'xxxxxxxxxxxxxxxxxxx'
+  :name: :web02
+  :roles:
+    - iis
+    - web
+
+iis-elb-xxxxxxxxxxxxxxxxxxx.ap-northeast-1.elb.amazonaws.com:
+  :name: :app
+  :roles:
+    - web

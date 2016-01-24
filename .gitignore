@@ -1,0 +1,8 @@
+*.swp
+hosts
+properties.yml
+*.tfstate
+*.tfstate.backup
+Makefile
+.bundle
+vendor
